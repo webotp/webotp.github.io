@@ -2,7 +2,7 @@
 
 self.addEventListener('paymentrequest', e => {
   console.log("requested");
-  e.openWindow("/");
+  e.openWindow("/index.html");
 });
 
 self.addEventListener('canmakepayment', e => {
