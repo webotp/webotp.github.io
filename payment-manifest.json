@@ -1,4 +1,4 @@
 {
-    "default_applications": ["https://payment-handler-example2.appspot.com"],
+    "default_applications": ["https://gogerald.github.io/pr/bobpaypersonal/manifest.json"],
     "supported_origins": ["*"]
 }
