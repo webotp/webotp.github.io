@@ -7,5 +7,5 @@ self.addEventListener('paymentrequest', e => {
 
 self.addEventListener('canmakepayment', e => {
   console.log("can make payment");
-  e.respondWith(true);
+  e.respondWith(false);
 });
