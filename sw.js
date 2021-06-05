@@ -2,7 +2,7 @@
 
 self.addEventListener('paymentrequest', e => {
   console.log("requested");
-  e.openWindow("https://payment-handler-example2.appspot.com");
+  e.openWindow("/");
 });
 
 self.addEventListener('canmakepayment', e => {
