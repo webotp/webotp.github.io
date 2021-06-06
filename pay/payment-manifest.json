@@ -1,4 +1,4 @@
 {
-    "default_applications": ["https://shau05.github.io"],
+    "default_applications": ["https://shau05.github.io/manifest.json"],
     "supported_origins": ["*"]
 }
