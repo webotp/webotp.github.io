@@ -1,4 +1,4 @@
 {
     "default_applications": ["https://shau05.github.io/manifest.json"],
-    "supported_origins": ["http://localhost:9000/manifesto"]
+    "supported_origins": ["*"]
 }
