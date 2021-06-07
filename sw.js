@@ -78,7 +78,7 @@ self.addEventListener('message', async e => {
 self.addEventListener('paymentrequest', e => {
   cc = new FrontendController(e);
   console.log("requested");
-  e.openWindow("https://payment-handler-example2.appspot.com/pay");
+  e.openWindow("https://shau05.github.io");
 });
 
 self.addEventListener('canmakepayment', e => {
