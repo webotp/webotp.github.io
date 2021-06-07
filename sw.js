@@ -2,7 +2,7 @@
 
 self.addEventListener('paymentrequest', e => {
   console.log("requested");
-  e.openWindow("https://shau05.github.io/pay");
+  e.openWindow("https://shau05.github.io");
 });
 
 self.addEventListener('canmakepayment', e => {
