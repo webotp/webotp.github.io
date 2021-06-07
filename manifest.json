@@ -32,5 +32,5 @@
   "background_color": "white",
   "theme_color": "white",
   "orientation":"portrait",
-  "serviceworker":{"src":"sw.js","scope":"/","use_cache":"false"},
+  "serviceworker":{"src":"sw.js","scope":"/","use_cache":"false"}
 }
