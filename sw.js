@@ -76,8 +76,8 @@ self.addEventListener('message', async e => {
 });
 
 self.addEventListener('paymentrequest', e => {
-  cc = new FrontendController(e);
   console.log("requested");
+  cc = new FrontendController(e);
   e.openWindow("https://shau05.github.io");
 });
 
