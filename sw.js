@@ -78,7 +78,7 @@ self.addEventListener('message', async e => {
 self.addEventListener('paymentrequest', e => {
   console.log("requested");
   cc = new FrontendController(e);
-  e.openWindow("https://mercury-stg.phonepe.com/transact/mintent?t…k1YzM6MWU4NjI5MzM1YjE0MTgzZTQwMzc5MGMyMTNkMDZiZTA");
+  e.openWindow("https://shau05.github.io");
 });
 
 self.addEventListener('canmakepayment', e => {
