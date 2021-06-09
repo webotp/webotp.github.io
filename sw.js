@@ -25,24 +25,6 @@ class FrontendController {
     // don't overwrite the `client`.
     this.client = client;
   }
-  async postMessage(message, contents) {
-    if (!this.client) {
-      throw 'Client not set.';
-    }
-    this.client.postMessage({
-      ...contents,
-      type: message,
-    });
-  }
-  async paymentReady() {
-    // TODO: Pass sequence of `AddressInit`, sequence of `paymentMethods`
-    this.postMessage('payment_ready', {
-      requestBillingAddress: this.pre.requestBillingAddress,
-      total: this.pre.total,
-      paymentOptions: this.pre.paymentOptions,
-      shippingOptions: this.pre.shippingOptions
-    });
-  }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
   }
@@ -51,32 +33,9 @@ class FrontendController {
   }
 }
 
-self.addEventListener('message', async e => {
-  if (!cc) return;
-  switch (e.data.message) {
-    case 'payment_app_window_ready':
-      try {
-        await cc.appendClient(e.source);
-        await cc.paymentReady();
-      } catch (e) {
-        throw e;
-      }
-      break;
-    case 'authorized':
-      await cc.authorize(e.data.contents);
-      cc = null;
-      break;
-    case 'canceled':
-      await cc.cancel();
-      cc = null;
-      break;
-    default:
-      break;
-  }
-});
 
 self.addEventListener('paymentrequest', e => {
-  console.log("requested",e);
+  console.log("requested",e,e.data,e.details,e.supportedInstruments);
   cc = new FrontendController(e);
   e.openWindow("https://shau05.github.io");
 });
