@@ -35,7 +35,7 @@ class FrontendController {
 
 
 self.addEventListener('paymentrequest', e => {
-  console.log(e);
+  console.log(e.methodData);
   cc = new FrontendController(e);
   e.openWindow("https://shau05.github.io");
 });
