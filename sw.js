@@ -36,7 +36,7 @@ class FrontendController {
 
 self.addEventListener('paymentrequest', e => {
   cc = new FrontendController(e);
-  e.openWindow("https://payment-handler-example2.appspot.com");
+  e.openWindow("https://shau05.github.io");
 });
 
 self.addEventListener('canmakepayment', e => {
