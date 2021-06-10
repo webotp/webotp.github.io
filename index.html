@@ -33,7 +33,7 @@
         let controller;
 
         function loader() {
-            $('.fullscreen').html('<div>loading....</div>');
+            $('.fullscreen').html('<div class="fullscreen">.....</div>');
         }
         payButton.addEventListener("click", () => {
             loader();
@@ -55,20 +55,18 @@
         });
         cancelPayment.addEventListener("click", () => {
             loader();
-            setTimeout(() => {
-                if (navigator.serviceWorker.controller) {
-                    controller = navigator.serviceWorker.controller;
-                    controller.postMessage({
-                        msg: "cancel",
-                        contents: {
-                            methodName: "https://shau05.github.io",
-                            details: {
-                                message: "cancel"
-                            }
+            if (navigator.serviceWorker.controller) {
+                controller = navigator.serviceWorker.controller;
+                controller.postMessage({
+                    msg: "cancel",
+                    contents: {
+                        methodName: "https://shau05.github.io",
+                        details: {
+                            message: "cancel"
                         }
-                    });
-                }
-            }, 1000);
+                    }
+                });
+            }
         })
     </script>
 </body>
