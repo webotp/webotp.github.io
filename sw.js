@@ -29,10 +29,10 @@ class FrontendController {
     this.resolver.resolve(paymentHandlerResponse);
   }
   async success(text){
-    return this.resolver.resolve();
+    return this.resolver.resolve(text);
   }
   async cancel(text) {
-    return this.resolver.reject();
+    return this.resolver.reject(text);
   }
 }
 
