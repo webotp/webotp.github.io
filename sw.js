@@ -18,8 +18,6 @@ class PromiseResolver {
 let cc;
 
 class FrontendController {
-  // Restore `PaymentRequestEvent`
-  // https://w3c.github.io/payment-handler/#the-paymentrequestevent
   constructor(event) {
     this.resolver = new PromiseResolver();
     this.pre = event;
@@ -51,6 +49,7 @@ class FrontendController {
 }
 
 self.addEventListener('message', async e => {
+  console.log(e.source);
   switch (e.data.msg) {
     case "cancel":
       await cc.cancel(e.data.contents);
