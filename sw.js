@@ -1,4 +1,3 @@
-
 class PromiseResolver {
   constructor() {
     this.promise_ = new Promise((resolve, reject) => {
@@ -6,9 +5,15 @@ class PromiseResolver {
       this.reject_ = reject;
     });
   }
-  get promise() { return this.promise_ }
-  get resolve() { return this.resolve_ }
-  get reject() { return this.reject_ }
+  get promise() {
+    return this.promise_
+  }
+  get resolve() {
+    return this.resolve_
+  }
+  get reject() {
+    return this.reject_
+  }
 }
 let cc;
 
@@ -28,23 +33,30 @@ class FrontendController {
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
   }
-  async success(text){
+  async success(text) {
     return this.resolver.resolve(text);
   }
   async cancel(text) {
     return this.resolver.reject(text);
   }
+  async failed(text) {
+    return this.resolver.resolve(text);
+  }
 }
 
-self.addEventListener('message',async e => {
-  switch(e.data.msg){
+self.addEventListener('message', async e => {
+  switch (e.data.msg) {
     case "cancel":
       await cc.cancel(e.data.contents);
-      cc=null;
+      cc = null;
       break;
     case "success":
       await cc.success(e.data.contents);
-      cc=null;
+      cc = null;
+      break;
+    case "failed":
+      await cc.failed(e.data.contents);
+      cc = null;
       break;
   }
 })
