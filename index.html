@@ -38,7 +38,7 @@
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     let controller = navigator.serviceWorker.controller;
-                    controller.postMessage("cancelled");
+                    controller.postMessage("cancel");
                 }
             }, 1000);
         })
