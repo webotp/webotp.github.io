@@ -73,7 +73,7 @@ self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
-  cc.postmessage("amount", ...e.total);
+  cc.postmessage("amount", e.total);
   e.openWindow("https://shau05.github.io");
 });
 
