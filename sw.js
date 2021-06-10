@@ -43,7 +43,7 @@ class FrontendController {
     return this.resolver.resolve(text);
   }
   async postMessage(message, contents) {
-    this.client.postMessage({
+    this.postMessage({
       ...contents,
       type: message,
     })
@@ -64,13 +64,14 @@ self.addEventListener('message', async e => {
       await cc.failed(e.data.contents);
       cc = null;
       break;
+    case "payment_app_window_ready":
+      break;
   }
 })
 
 self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
-
   cc = new FrontendController(e);
   cc.postMessage("amount", {
     amount: {

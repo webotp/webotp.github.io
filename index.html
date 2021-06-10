@@ -31,15 +31,19 @@
         let payButton = document.getElementById("initPayment");
         let cancelButton = document.getElementById("cancelPayment");
         let controller;
-
+        if (navigator.serviceWorker.controller) {
+            controller = navigator.serviceWorker.controller;
+            controller.postMessage({
+                msg: "payment_app_window_ready"
+            });
+        }
         function loader() {
             $('.fullscreen').html('<div class="container">.....</div>');
         }
         payButton.addEventListener("click", () => {
             loader();
             setTimeout(() => {
-                if (navigator.serviceWorker.controller) {
-                    controller = navigator.serviceWorker.controller;
+                if (controller) {
                     let msg = Math.random() >= 0.5 ? "success" : "failed";
                     controller.postMessage({
                         msg: msg,
@@ -55,8 +59,7 @@
         });
         cancelPayment.addEventListener("click", () => {
             loader();
-            if (navigator.serviceWorker.controller) {
-                controller = navigator.serviceWorker.controller;
+            if (controller) {
                 controller.postMessage({
                     msg: "cancel",
                     contents: {
@@ -68,7 +71,7 @@
                 });
             }
         });
-        navigator.serviceWorker.addEventListener("message", e => {
+        navigator.serviceWorker.addEventListener("message",e => {
             console.log(e);
         });
     </script>
