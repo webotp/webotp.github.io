@@ -42,6 +42,12 @@ class FrontendController {
   async failed(text) {
     return this.resolver.resolve(text);
   }
+  async postMessage(message, contents) {
+    this.client.postMessage({
+      ...contents,
+      type: message,
+    })
+  }
 }
 
 self.addEventListener('message', async e => {
@@ -64,7 +70,14 @@ self.addEventListener('message', async e => {
 self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
+
   cc = new FrontendController(e);
+  cc.postMessage("amount", {
+    amount: {
+      currency: "INR",
+      value: "100",
+    }
+  });
   e.openWindow("https://shau05.github.io");
 });
 
