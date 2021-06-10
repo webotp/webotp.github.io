@@ -30,19 +30,19 @@
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     let controller = navigator.serviceWorker.contorller;
-                    controller.postMessage("success",{
-                        message:"payment is successful",
-                    })
+                    controller.postMessage("success", [{
+                        message: "payment successful"
+                    }]);
                 }
             }, 1000);
         });
-        cncelPayment.addEventListener("click",() => {
+        cancelPayment.addEventListener("click", () => {
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     let controller = navigator.serviceWorker.contorller;
-                    controller.postMessage("cancel",{
-                        message:"payment is canceled by user",
-                    })
+                    controller.postMessage("cancelled", [{
+                        message: "user cancelled payment"
+                    }]);
                 }
             }, 1000);
         })
