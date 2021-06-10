@@ -28,18 +28,37 @@
         let cancelButton = document.getElementById("cancelPayment");
         let controller;
         payButton.addEventListener("click", () => {
+            cancelButton.style.display = "none";
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     controller = navigator.serviceWorker.controller;
-                    controller.postMessage({msg:"success",contents:{methodName:"https://shau05.github.io",details:{message:"success"}}});
+                    let msg = Math.random() >= 0.5 ? "success" : "failed";
+                    controller.postMessage({
+                        msg: msg,
+                        contents: {
+                            methodName: "https://shau05.github.io",
+                            details: {
+                                message: "success"
+                            }
+                        }
+                    });
                 }
             }, 1000);
         });
         cancelPayment.addEventListener("click", () => {
+            payButton.style.display = "none";
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     ccontroller = navigator.serviceWorker.controller;
-                    controller.postMessage({msg:"success",contents:{methodName:"https://shau05.github.io",details:{message:"cancel"}}});
+                    controller.postMessage({
+                        msg: "cancel",
+                        contents: {
+                            methodName: "https://shau05.github.io",
+                            details: {
+                                message: "cancel"
+                            }
+                        }
+                    });
                 }
             }, 1000);
         })
