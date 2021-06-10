@@ -37,7 +37,7 @@ class FrontendController {
 }
 
 self.addEventListener('message',async e => {
-  console.log(e.data,e.data.message);
+  console.log(e,e.data,e.data.message);
   switch(e.data.message){
     case "cancel":
       await cc.cancel(e.data.contents);

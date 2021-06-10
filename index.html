@@ -29,7 +29,7 @@
         let controller;
         let postMessage = (message,contents) => {
             if(controller){
-                controller.postMessage({message,contents});
+                controller.postMessage({message:message,contents:contents});
             }else{
                 console.log("controller error");
             }
