@@ -26,19 +26,27 @@
     <script>
         let payButton = document.getElementById("initPayment");
         let cancelButton = document.getElementById("cancelPayment");
+        let controller;
+        let postMessage = (message,contents) => {
+            if(controller){
+                controller.postMessage({message,contents});
+            }else{
+                console.log("controller error");
+            }
+        }
         payButton.addEventListener("click", () => {
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
-                    let controller = navigator.serviceWorker.controller;
-                    controller.postMessage("success");
+                    controller = navigator.serviceWorker.controller;
+                    controller.postMessage("success",{methodName:"method",details:{total:"100"}});
                 }
             }, 1000);
         });
         cancelPayment.addEventListener("click", () => {
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
-                    let controller = navigator.serviceWorker.controller;
-                    controller.postMessage("cancel");
+                    ccontroller = navigator.serviceWorker.controller;
+                    controller.postMessage("cancel",{methodName:"method",details:{total:"100"}});
                 }
             }, 1000);
         })
