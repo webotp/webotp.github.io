@@ -22,23 +22,9 @@
 <body class="fullscreen">
     <div class="container">
         <h1 class="title">Hello!</h1>
-        <button id="cancelPayment">Cancel</button>
-        <button id="initPayment">Pay</button>
+        <button class="hollowButton" id="cancelPayment">Cancel</button>
+        <button class="btn waves-effect waves-light" id="initPayment">Pay</button>
     </div>
-    <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-blue">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-                <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-                <div class="circle"></div>
-            </div>
-        </div>
-    </div>
-
     <script src="/js/jquery.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script>
@@ -47,9 +33,7 @@
         let controller;
 
         function loader() {
-            $('.fullscreen').html(
-                '<div class="spinner-layer spinner-blue"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div>'
-                );
+            $('.fullscreen').html();
         }
         payButton.addEventListener("click", () => {
             loader();
