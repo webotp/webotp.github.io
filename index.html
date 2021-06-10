@@ -27,18 +27,11 @@
         let payButton = document.getElementById("initPayment");
         let cancelButton = document.getElementById("cancelPayment");
         let controller;
-        let postMessage = (message,contents) => {
-            if(controller){
-                controller.postMessage({message:message,contents:contents});
-            }else{
-                console.log("controller error");
-            }
-        }
         payButton.addEventListener("click", () => {
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     controller = navigator.serviceWorker.controller;
-                    controller.postMessage("success",{methodName:"method",details:{total:"100"}});
+                    controller.postMessage({msg:"success",contents:{methodName:"method",details:{total:"100"}}});
                 }
             }, 1000);
         });
@@ -46,7 +39,7 @@
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     ccontroller = navigator.serviceWorker.controller;
-                    controller.postMessage("cancel",{methodName:"method",details:{total:"100"}});
+                    controller.postMessage({msg:"success",contents:{methodName:"method",details:{total:"100"}}});
                 }
             }, 1000);
         })
