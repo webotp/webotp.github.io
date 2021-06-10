@@ -39,7 +39,7 @@
         cancelPayment.addEventListener("click", () => {
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
-                    let controller = navigator.serviceWorker.contorller;
+                    let controller = navigator.serviceWorker.controller;
                     controller.postMessage("cancelled", [{
                         message: "user cancelled payment"
                     }]);
