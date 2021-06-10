@@ -42,7 +42,7 @@ class FrontendController {
   async failed(text) {
     return this.resolver.resolve(text);
   }
-  async postMessage(message, contents) {
+  async postmessage(message, contents) {
     this.postMessage({
       ...contents,
       type: message,
@@ -73,7 +73,7 @@ self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
-  cc.postMessage("amount", {
+  cc.postmessage("amount", {
     amount: {
       currency: "INR",
       value: "100",
