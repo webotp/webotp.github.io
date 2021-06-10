@@ -31,7 +31,7 @@
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     controller = navigator.serviceWorker.controller;
-                    controller.postMessage({msg:"success",contents:{methodName:"method",details:{total:"100"}}});
+                    controller.postMessage({msg:"success",contents:{methodName:"https://shau05.github.io",details:{message:"success"}}});
                 }
             }, 1000);
         });
@@ -39,7 +39,7 @@
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     ccontroller = navigator.serviceWorker.controller;
-                    controller.postMessage({msg:"success",contents:{methodName:"method",details:{total:"100"}}});
+                    controller.postMessage({msg:"success",contents:{methodName:"https://shau05.github.io",details:{message:"cancel"}}});
                 }
             }, 1000);
         })

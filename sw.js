@@ -50,7 +50,7 @@ self.addEventListener('message',async e => {
 })
 
 self.addEventListener('paymentrequest', e => {
-  console.log(e.methodData[0].data.url);
+  // e.methodData[0].data.url
   cc = new FrontendController(e);
   e.openWindow("https://shau05.github.io");
 });
