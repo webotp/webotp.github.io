@@ -57,7 +57,7 @@
             loader();
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
-                    ccontroller = navigator.serviceWorker.controller;
+                    controller = navigator.serviceWorker.controller;
                     controller.postMessage({
                         msg: "cancel",
                         contents: {
