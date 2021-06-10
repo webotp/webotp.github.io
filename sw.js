@@ -28,10 +28,10 @@ class FrontendController {
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
   }
-  async success(){
+  async success(text){
     return this.resolver.resolve();
   }
-  async cancel() {
+  async cancel(text) {
     return this.resolver.reject();
   }
 }
@@ -39,11 +39,11 @@ class FrontendController {
 self.addEventListener('message',async e => {
   switch(e.data){
     case "cancel":
-      await cc.cancel();
+      await cc.cancel("failed");
       cc=null;
       break;
     case "success":
-      await cc.success();
+      await cc.success("success");
       cc=null;
       break;
   }
