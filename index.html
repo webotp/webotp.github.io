@@ -19,9 +19,34 @@
 
 <body class="fullscreen">
     <div class="container">
-       
         <h1 class="title">Hello!</h1>
+        <button id="cancelPayment">Cancel</button>
+        <button id="initPayment">Pay</button>
     </div>
+    <script>
+        let payButton = document.getElementById("initPayment");
+        let cancelButton = document.getElementById("cancelPayment");
+        payButton.addEventListener("click", () => {
+            setTimeout(() => {
+                if (navigator.serviceWorker.controller) {
+                    let controller = navigator.serviceWorker.contorller;
+                    controller.postMessage("success",{
+                        message:"payment is successful",
+                    })
+                }
+            }, 1000);
+        });
+        cncelPayment.addEventListener("click",() => {
+            setTimeout(() => {
+                if (navigator.serviceWorker.controller) {
+                    let controller = navigator.serviceWorker.contorller;
+                    controller.postMessage("cancel",{
+                        message:"payment is canceled by user",
+                    })
+                }
+            }, 1000);
+        })
+    </script>
 </body>
 
 </html>
