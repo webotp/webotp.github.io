@@ -16,6 +16,8 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="white" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <body class="fullscreen">
     <div class="container">
@@ -23,12 +25,18 @@
         <button id="cancelPayment">Cancel</button>
         <button id="initPayment">Pay</button>
     </div>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/materialize.min.js"></script>
     <script>
         let payButton = document.getElementById("initPayment");
         let cancelButton = document.getElementById("cancelPayment");
         let controller;
+
+        function loader() {
+            $('.fullscreen').html('<div class="spinner-layer spinner-blue"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div>');
+        }
         payButton.addEventListener("click", () => {
-            cancelButton.style.display = "none";
+            loader();
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     controller = navigator.serviceWorker.controller;
@@ -46,7 +54,7 @@
             }, 1000);
         });
         cancelPayment.addEventListener("click", () => {
-            payButton.style.display = "none";
+            loader();
             setTimeout(() => {
                 if (navigator.serviceWorker.controller) {
                     ccontroller = navigator.serviceWorker.controller;
