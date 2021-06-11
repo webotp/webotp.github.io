@@ -68,6 +68,6 @@ self.addEventListener('paymentrequest', e => {
 });
 
 self.addEventListener('canmakepayment', e => {
-  console.log("can make payment");
+  console.log(e);
   e.respondWith(true);
 });
