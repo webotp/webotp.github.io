@@ -27,6 +27,7 @@ class FrontendController {
     // TODO: If you want to just one session at one time,
     // don't overwrite the `client`.
     this.client = client;
+    this.client.postMessage({msg:"amount",total:this.pre.total});
   }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
@@ -37,16 +38,9 @@ class FrontendController {
   async cancel(text) {
     return this.resolver.reject(text);
   }
-  async postmessage(message, contents) {
-    this.client.postMessage({
-      ...contents,
-      msg: message
-    });
-  }
 }
 
 self.addEventListener('message', async e => {
-  console.log(e.source);
   switch (e.data.msg) {
     case "cancel":
       await cc.cancel(e.data.contents);
@@ -70,7 +64,6 @@ self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
-  cc.postmessage("amount",{total:e.total});
   e.openWindow("https://shau05.github.io");
 });
 
