@@ -37,11 +37,8 @@ class FrontendController {
   async cancel(text) {
     return this.resolver.reject(text);
   }
-  async failed(text) {
-    return this.resolver.resolve(text);
-  }
   async postmessage(message, contents) {
-    this.postMessage({
+    this.client.postMessage({
       ...contents,
       msg: message
     });
@@ -60,10 +57,11 @@ self.addEventListener('message', async e => {
       cc = null;
       break;
     case "failed":
-      await cc.failed(e.data.contents);
+      await cc.success(e.data.contents);
       cc = null;
       break;
     case "payment_app_window_ready":
+      cc.appendClient(e.source);
       break;
   }
 })
@@ -72,6 +70,7 @@ self.addEventListener('paymentrequest', e => {
   // e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
+  cc.postmessage("amount",{total:e.total});
   e.openWindow("https://shau05.github.io");
 });
 
