@@ -21,7 +21,8 @@
 
 <body class="fullscreen">
     <div class="container">
-
+        <div id="total-data">
+        </div>
         <button class="btn waves-effect" id="cancelPayment">Cancel</button>
         <button class="btn waves-effect waves-light" id="initPayment">Pay</button>
     </div>
@@ -37,6 +38,7 @@
                 msg: "payment_app_window_ready"
             });
         }
+
         function loader() {
             $('.fullscreen').html('<div class="container">.....</div>');
         }
@@ -71,8 +73,14 @@
                 });
             }
         });
-        navigator.serviceWorker.addEventListener("message",e => {
-            console.log(e);
+        navigator.serviceWorker.addEventListener("message", e => {
+            let data = e.data.total;
+            $("#total-data").html(`<div class="row">
+                <div class="input-field col s12">
+                    <input disabled  id="disabled" value="${data.value/100}" type="text" class="validate">
+                    <label for="disabled">Total</label>
+                </div>
+            </div>`);
         });
     </script>
 </body>
