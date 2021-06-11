@@ -27,7 +27,10 @@ class FrontendController {
     // TODO: If you want to just one session at one time,
     // don't overwrite the `client`.
     this.client = client;
-    this.client.postMessage({msg:"amount",total:this.pre.total});
+    this.client.postMessage({
+      msg: "amount",
+      total: this.pre.total
+    });
   }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
@@ -36,7 +39,11 @@ class FrontendController {
     return this.resolver.resolve(text);
   }
   async cancel(text) {
-    return this.resolver.reject(text);
+    try {
+      return this.resolver.reject(text);
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
