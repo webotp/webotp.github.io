@@ -14,6 +14,7 @@ body {
   
   /* Center the content in the browser window */
   .container {
+    margin:7% 15%;
     /* margin: auto;
     text-align: center; */
   }
