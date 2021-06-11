@@ -39,11 +39,7 @@ class FrontendController {
     return this.resolver.resolve(text);
   }
   async cancel(text) {
-    try {
-      return this.resolver.reject(text);
-    } catch (err) {
-      console.log(err);
-    }
+    return this.resolver.reject(text);
   }
 }
 
