@@ -77,8 +77,8 @@
             let data = e.data.total;
             $("#total-data").html(`<div class="row">
                 <div class="input-field col s12">
-                    <input disabled  id="disabled" value="${data.value/100}" type="text" class="validate">
                     <label for="disabled">Total</label>
+                    <input disabled  id="disabled" value="${data.value/100}" type="text">
                 </div>
             </div>`);
         });
