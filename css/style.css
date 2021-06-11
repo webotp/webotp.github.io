@@ -15,3 +15,8 @@ body {
   .title {
     font-size: 3rem;
   }
+
+  .cont{
+    margin:auto !important;
+    text-align:center !important;
+  }
