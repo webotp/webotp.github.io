@@ -74,13 +74,14 @@
             }
         });
         navigator.serviceWorker.addEventListener("message", e => {
-            let data = e.data.total;
-            $("#total-data").html(`<div class="row">
-                <div class="input-field col s12">
-                    <input disabled  id="disabled" value="${data.value/100}" type="text" class="validate">
-                    <label for="disabled">Total</label>
-                </div>
-            </div>`);
+            // let data = e.data.total;
+            console.log(e);
+            // $("#total-data").html(`<div class="row">
+            //     <div class="input-field col s12">
+            //         <input disabled  id="disabled" value="${data.value/100}" type="text" class="validate">
+            //         <label for="disabled">Total</label>
+            //     </div>
+            // </div>`);
         });
     </script>
 </body>
