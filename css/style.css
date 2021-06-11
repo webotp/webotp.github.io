@@ -8,15 +8,8 @@ body {
     display: flex;
     height: 100%;
     margin: 0;
-    padding: 0;
     width: 100%;
-  }
-  
-  /* Center the content in the browser window */
-  .container {
-    margin:7% 15%;
-    /* margin: auto;
-    text-align: center; */
+    padding:7% 15% !important;
   }
   
   .title {
