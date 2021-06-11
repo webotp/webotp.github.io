@@ -14,8 +14,8 @@ body {
   
   /* Center the content in the browser window */
   .container {
-    margin: auto;
-    text-align: center;
+    /* margin: auto;
+    text-align: center; */
   }
   
   .title {
