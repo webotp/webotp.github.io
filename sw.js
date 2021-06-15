@@ -58,7 +58,11 @@ self.addEventListener('message', async e => {
       cc = null;
       break;
     case "payment_app_window_ready":
+      console.log(e.source);
       cc.appendClient(e.source);
+      break;
+    case "i am another client":
+      console.log(e.source);
       break;
   }
 })
