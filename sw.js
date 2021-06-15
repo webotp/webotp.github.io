@@ -24,13 +24,11 @@ class FrontendController {
     this.pre.respondWith(this.resolver.promise);
   }
   async appendClient(client) {
-    // TODO: If you want to just one session at one time,
-    // don't overwrite the `client`.
     this.client = client;
-    this.client.postMessage({
-      msg: "amount",
-      total: this.pre.total
-    });
+    // this.client.postMessage({
+    //   msg: "amount",
+    //   total: this.pre.total
+    // });
   }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
@@ -57,12 +55,8 @@ self.addEventListener('message', async e => {
       await cc.success(e.data.contents);
       cc = null;
       break;
-    case "payment_app_window_ready":
-      console.log(e.source);
+    case "client_ready":
       cc.appendClient(e.source);
-      break;
-    case "i am another client":
-      console.log(e.source);
       break;
   }
 })
