@@ -35,7 +35,7 @@
         if (navigator.serviceWorker.controller) {
             controller = navigator.serviceWorker.controller;
             controller.postMessage({
-                msg: "payment_app_window_ready"
+                msg: "client_ready"
             });
         }
 
