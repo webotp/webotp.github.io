@@ -18,6 +18,7 @@
     <meta name="theme-color" content="white" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 <body class="fullscreen">
     <div class="container">
         <div id="total-data">
@@ -25,8 +26,6 @@
         <button class="btn waves-effect" id="cancelPayment">Cancel</button>
         <button class="btn waves-effect waves-light" id="initPayment">Pay</button>
     </div>
-    <!-- <a href="/public/index1.html">Go to</a> -->
-    <a href="https://google.com">Testing if service worker is active only in its domain or not</a>
     <script src="/js/jquery.js"></script>
     <script src="/js/materialize.min.js"></script>
     <script>
@@ -41,7 +40,9 @@
         }
 
         function loader() {
-            $('.fullscreen').html(`<div class="cont"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>`);
+            $('.fullscreen').html(
+                `<div class="cont"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>`
+                );
         }
         payButton.addEventListener("click", () => {
             loader();
