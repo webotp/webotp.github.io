@@ -25,10 +25,10 @@ class FrontendController {
   }
   async appendClient(client) {
     this.client = client;
-    // this.client.postMessage({
-    //   msg: "amount",
-    //   total: this.pre.total
-    // });
+    this.client.postMessage({
+      msg: "amount",
+      total: this.pre.total
+    });
   }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
