@@ -17,6 +17,20 @@
     padding: 0 0 !important;
 }
 
+.list-group-item {
+    background: #fff !important;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    border-radius: 6px !important;
+}
+
+.hrow {
+    background: #fff !important;
+    -webkit-box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
+    border-radius: 6px !important;
+}
+
 .arrow {
     border: solid rgba(88, 77, 77, 0.87);
     border-width: 0 3px 3px 0;
