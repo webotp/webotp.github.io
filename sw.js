@@ -142,11 +142,11 @@ self.addEventListener("message", async e => {
 });
 
 self.addEventListener("paymentrequest", e => {
-  let redirectUrl = e.methodData[0].data.url;
+  // let redirectUrl = e.methodData[0].data.url;
   cc = new FrontendController(e);
   // check if client window is not null.
   e
-    .openWindow(redirectUrl)
+    .openWindow("https://shau05.github.io")
     .then(client => {
       if (client == null) {
         cc.cancel("failed to open the window");
