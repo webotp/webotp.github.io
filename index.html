@@ -5,17 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Demo</title>
 </head>
 
 <body>
     <button style="margin:7% 15%;font-size:2rem;" onclick="initiatePayment()">Pay</button>
+    <script src="/js/lib/jquery.js"></script>
+    <script src="/js/lib/materialize.min.js"></script>
     <script>
         function initPaymentRequest() {
             if (!window.PaymentRequest) {
                 return null;
             }
-            let url = "https://mercury-stg.phonepe.com/transact/mintent?token=YTI5ZDhmNWZkY2Y3MzNjNTUzZmRmN2FkMGU0NjY4YTI2ODMxNzVhOWM5MWE5MGZiYWMwYjAzODliNmE1MDFlMWQyMTNiNDE1NjJmZjk1MzVjNTZlMzdhZDc0YWViNzU5Mzg0Yzc3MGQxYjNkNWU6ZWQ5ZGE3MGIzNDI1ZTUzMDBlNzZhMmU5ODFkZTAyZmM";
+            let url = "https://mercury-stg.phonepe.com/transact/mintent?token=MTg0MDg4YWRkODQ5MmQxZDRhM2E1NmRkZTkyOTYzZDRjZDIwMWMwNzFhZTI0ZmIzNWM4YmUyMTgzYWUzYTg5NzA5OTJlMGNhYTFiZTcwYWQ4ZWZjMzhjNTVmMTA5ZGUxMzY4MjQ4ODFkYTA1MzE6N2QxMWZmZjdjOTJkN2VkNjI3NmU1MzIyYTBiZDViZTQ";
             let supportedInstruments = [{
                 supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
                 data: {
