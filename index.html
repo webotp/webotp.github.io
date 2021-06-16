@@ -9,15 +9,18 @@
 </head>
 
 <body>
-    <button onclick="initiatePayment()">Pay</button>
+    <button style="margin:7% 15%;font-size:2rem;" onclick="initiatePayment()">Pay</button>
     <script>
         function initPaymentRequest() {
             if (!window.PaymentRequest) {
                 return null;
             }
+            let url = "https://mercury-stg.phonepe.com/transact/mintent?token=YTI5ZDhmNWZkY2Y3MzNjNTUzZmRmN2FkMGU0NjY4YTI2ODMxNzVhOWM5MWE5MGZiYWMwYjAzODliNmE1MDFlMWQyMTNiNDE1NjJmZjk1MzVjNTZlMzdhZDc0YWViNzU5Mzg0Yzc3MGQxYjNkNWU6ZWQ5ZGE3MGIzNDI1ZTUzMDBlNzZhMmU5ODFkZTAyZmM";
             let supportedInstruments = [{
-                supportedMethods: "https://shau05.github.io/transact/payment-manifest.json",
-                data: {}
+                supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
+                data: {
+                    url
+                }
             }];
             const details = {
                 total: {
