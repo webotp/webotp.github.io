@@ -5,74 +5,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>Demo</title>
 </head>
 
 <body>
-    <button style="margin:7% 15%;font-size:2rem;" onclick="initiatePayment()">Pay</button>
-    <script src="/js/lib/jquery.js"></script>
-    <script src="/js/lib/materialize.min.js"></script>
-    <script>
-        function initPaymentRequest() {
-            if (!window.PaymentRequest) {
-                return null;
-            }
-            let url = "https://mercury-stg.phonepe.com/transact/?token=YzMwNDNiODE5MDU4YzlmNzA5ZWIzMzFkNzlmZTQ2NTExNjE0MTc4NjVhYWY3ZGQzZjMzMWYzYzljYjRkNmQ0NzI4ZTAxOTRjMDQ3MDM2OTY1Y2M1ZWQ1NGU3YjlkNjUwYmI5MjBjNGYxMjQ3Y2I6YjA4YTAyYzliYTUyYzY1YWU3NDEzMGZiOTdkNzAwOTQ";
-            let supportedInstruments = [{
-                supportedMethods: "https://mercury-stg.phonepe.com/transact/pay",
-                data: {
-                    url
-                }
-            }];
-            const details = {
-                total: {
-                    label: "total",
-                    amount: {
-                        currency: "INR",
-                        value: "100",
-                    }
-                }
-            }
-            let request = new PaymentRequest(supportedInstruments, details);
-            return request;
-        }
-        let success = (success_) => {
-            console.log("success " + success_);
-        }
-        let failure = (failure_) => {
-            console.log("failed " + failure_);
-        }
 
-        let handleResponse = (response) => {
-            console.log(response);
-        }
-
-        let initiatePayment = async () => {
-            let request = initPaymentRequest();
-            if (request == null) {
-                failure("browser does not support payment request api");
-                return;
-            }
-            request.canMakePayment().then((result) => {
-                console.log(result);
-                if (result == true) {
-                    success("can make payment");
-                    request.show().then((paymentResponse) => {
-                        paymentResponse.complete("success");
-                        handleResponse(paymentResponse);
-                    }).catch((err) => {
-                        failure(err);
-                    });
-                } else {
-                    failure("cannot make payment");
-                }
-            }).catch((err) => {
-                failure(err);
-            });
-        }
+    <div class="container">
+        <h4 class="text-center my-4">Payment</h4>
+        <div class="card">
+            <div class="card-body mx-2 my-2">
+                <form id="payment">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input1">Merchant ID</label>
+                                <input type="text" class="form-control" id="input1" placeholder="Merchant Id" value="M2306160483220675579140">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input2">Merchant Transaction id</label>
+                                <input type="text" class="form-control" id="input2" placeholder="Merchant Transaction Id" value="TX1623849861085">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input3">Amount(in paise)</label>
+                                <input type="number" class="form-control" id="input3" placeholder="Amount" value="100">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input4">Mobile Number</label>
+                                <input type="number" class="form-control" id="input4" placeholder="Mobile Number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input5">Merchant user ID</label>
+                                <input type="text" class="form-control" id="input5" placeholder="Merchant user Id">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input6">User auth token</label>
+                                <input type="text" class="form-control" id="input6" placeholder="User auth token">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input7">Callback URL</label>
+                                <input type="text" class="form-control" id="input7" placeholder="Callback URL">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="form-group">
+                                <label for="input8">Call Mode</label>
+                                <input type="text" class="form-control" id="input8" placeholder="Call Mode" value = "POST">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary my-3">Pay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <script src="/lib/js/jquery.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
+    </script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <script src="/lib/js/pr.js"></script>
 </body>
 
 </html>
