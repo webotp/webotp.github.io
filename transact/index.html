@@ -4,22 +4,22 @@
 <head>
     <meta charset="utf-8">
     <title>Payment App</title>
-    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="white" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 <body class="fullscreen">
     <div class="container">
-        
+        hello
     </div>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <script src="/lib/js/jquery.js"></script>
+    <script src="../lib/js/jquery.js"></script>
     <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
         integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
@@ -29,60 +29,7 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
     <script>
-        let payButton = document.getElementById("initPayment");
-        let cancelButton = document.getElementById("cancelPayment");
-        let controller;
-        if (navigator.serviceWorker.controller) {
-            controller = navigator.serviceWorker.controller;
-            controller.postMessage({
-                msg: "client_ready"
-            });
-        }
 
-        function loader() {
-            $('.fullscreen').html(
-                `<div class="cont"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>`
-            );
-        }
-        payButton.addEventListener("click", () => {
-            loader();
-            setTimeout(() => {
-                if (controller) {
-                    let msg = Math.random() >= 0.5 ? "success" : "failed";
-                    controller.postMessage({
-                        msg: msg,
-                        contents: {
-                            methodName: "https://shau05.github.io",
-                            details: {
-                                message: msg
-                            }
-                        }
-                    });
-                }
-            }, 1000);
-        });
-        cancelPayment.addEventListener("click", () => {
-            if (controller) {
-                controller.postMessage({
-                    msg: "cancel",
-                    contents: {
-                        methodName: "https://shau05.github.io",
-                        details: {
-                            message: "cancel"
-                        }
-                    }
-                });
-            }
-        });
-        navigator.serviceWorker.addEventListener("message", e => {
-            let data = e.data.total;
-            $("#total-data").html(`<div class="row">
-                <div>Total</div>
-                <div class="input-field col s12">
-                    <input disabled  id="disabled" value="${data.value/100} ${data.currency}" type="text">
-                </div>
-            </div>`);
-        });
     </script>
 </body>
 
