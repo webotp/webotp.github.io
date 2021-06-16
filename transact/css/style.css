@@ -1,0 +1,22 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  /* Make content area fill the entire browser window */
+  html,
+  .fullscreen {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    padding:7% 15% !important;
+  }
+  
+  .title {
+    font-size: 3rem;
+  }
+
+  .cont{
+    margin:auto !important;
+    text-align:center !important;
+  }

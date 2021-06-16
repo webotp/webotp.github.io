@@ -1,88 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Hello World</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-    <meta name="theme-color" content="white" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Hello World">
-    <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="white" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Document</title>
+</head>
 
-<body class="fullscreen">
-    <div class="container">
-        <div id="total-data">
-        </div>
-        <button class="btn waves-effect" id="cancelPayment">Cancel</button>
-        <button class="btn waves-effect waves-light" id="initPayment">Pay</button>
-    </div>
-    <script src="/js/jquery.js"></script>
-    <script src="/js/materialize.min.js"></script>
+<body>
+    <button onclick="initPayment()">Pay</button>
     <script>
-        let payButton = document.getElementById("initPayment");
-        let cancelButton = document.getElementById("cancelPayment");
-        let controller;
-        if (navigator.serviceWorker.controller) {
-            controller = navigator.serviceWorker.controller;
-            controller.postMessage({
-                msg: "client_ready"
+        function initPaymentRequest() {
+            if (!window.PaymentRequest) {
+                return null;
+            }
+            let supportedInstruments = [{
+                supportedMethods: "https://shau05.github.io/transact/payment-manifest.json",
+                data: {}
+            }];
+            const details = {
+                total: {
+                    label: "total",
+                    amount: {
+                        currency: "INR",
+                        value: "100",
+                    }
+                }
+            }
+            let request = new PaymentRequest(supportedInstruments, details);
+            return request;
+        }
+        let success = (success_) => {
+            console.log("success " + success_);
+        }
+        let failure = (failure_) => {
+            console.log("failed " + failure_);
+        }
+
+        let handleResponse = (response) => {
+            console.log(response);
+        }
+
+        let initiatePayment = async () => {
+            let request = initPaymentRequest();
+            if (request == null) {
+                failure("browser does not support payment request api");
+                return;
+            }
+            request.canMakePayment().then((result) => {
+                console.log(result);
+                if (result == true) {
+                    success("can make payment");
+                    request.show().then((paymentResponse) => {
+                        paymentResponse.complete("success");
+                        handleResponse(paymentResponse);
+                    }).catch((err) => {
+                        failure(err);
+                    });
+                } else {
+                    failure("cannot make payment");
+                }
+            }).catch((err) => {
+                failure(err);
             });
         }
-
-        function loader() {
-            $('.fullscreen').html(
-                `<div class="cont"><div class="preloader-wrapper big active"><div class="spinner-layer spinner-blue-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div></div>`
-                );
-        }
-        payButton.addEventListener("click", () => {
-            loader();
-            setTimeout(() => {
-                if (controller) {
-                    let msg = Math.random() >= 0.5 ? "success" : "failed";
-                    controller.postMessage({
-                        msg: msg,
-                        contents: {
-                            methodName: "https://shau05.github.io",
-                            details: {
-                                message: msg
-                            }
-                        }
-                    });
-                }
-            }, 1000);
-        });
-        cancelPayment.addEventListener("click", () => {
-            if (controller) {
-                controller.postMessage({
-                    msg: "cancel",
-                    contents: {
-                        methodName: "https://shau05.github.io",
-                        details: {
-                            message: "cancel"
-                        }
-                    }
-                });
-            }
-        });
-        navigator.serviceWorker.addEventListener("message", e => {
-            let data = e.data.total;
-            $("#total-data").html(`<div class="row">
-                <div>Total</div>
-                <div class="input-field col s12">
-                    <input disabled  id="disabled" value="${data.value/100} ${data.currency}" type="text">
-                </div>
-            </div>`);
-        });
     </script>
 </body>
 
