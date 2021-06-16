@@ -62,10 +62,16 @@ self.addEventListener('message', async e => {
 })
 
 self.addEventListener('paymentrequest', e => {
-  // e.methodData[0].data.url
+  let url = e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
-  e.openWindow("https://shau05.github.io/transact");
+  e.openWindow(url).then((client) => {
+    if (client == null) {
+      console.log("failed to open window");
+    }
+  }).catch((err) => {
+    console.log(err);
+  });
 });
 
 self.addEventListener('canmakepayment', e => {
