@@ -6,9 +6,13 @@
 }
 
 .col-xl-1,
-.col-xl-8,
+.col-xl-10,
 .col-md-1,
-.col-md-8,
+.col-md-10,
+.col-lg-1,
+.col-lg-10,
+.col-sm-1,
+.col-sm-10,
 .row {
     padding: 0 0 !important;
 }
