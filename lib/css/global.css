@@ -1,0 +1,26 @@
+.icon {
+    max-width: 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.col-xl-1,
+.col-xl-8,
+.col-md-1,
+.col-md-8,
+.row {
+    padding: 0 0 !important;
+}
+
+.arrow {
+    border: solid rgba(88, 77, 77, 0.87);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
