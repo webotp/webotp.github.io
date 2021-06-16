@@ -133,11 +133,11 @@ self.addEventListener("message", async e => {
       await cc.status(result);
       cc = null;
       break;
-    default:
-      const result = response(e.data.message);
-      await cc.cancel(result);
-      cc = null;
-      break;
+    // default:
+    //   const result = response(e.data.message);
+    //   await cc.cancel(result);
+    //   cc = null;
+    //   break;
   }
 });
 
