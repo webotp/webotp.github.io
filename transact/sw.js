@@ -25,10 +25,6 @@ class FrontendController {
   }
   async appendClient(client) {
     this.client = client;
-    this.client.postMessage({
-      msg: "amount",
-      total: this.pre.total
-    });
   }
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
@@ -68,6 +64,11 @@ self.addEventListener('paymentrequest', e => {
   e.openWindow(url).then((client) => {
     if (client == null) {
       console.log("failed to open window");
+    } else {
+      client.postMessage({
+        msg: "amount",
+        total: this.pre.total
+      });
     }
   }).catch((err) => {
     console.log(err);
