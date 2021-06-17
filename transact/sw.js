@@ -67,7 +67,7 @@ self.addEventListener('paymentrequest', e => {
     } else {
       client.postMessage({
         msg: "amount",
-        total: this.pre.total
+        total: e.total
       });
     }
   }).catch((err) => {
