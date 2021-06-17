@@ -33,7 +33,7 @@ class FrontendController {
   async authorize(paymentHandlerResponse) {
     this.resolver.resolve(paymentHandlerResponse);
   }
-  async success(text) {
+  async status(text) {
     return this.resolver.resolve(text);
   }
   async cancel(text) {
@@ -41,25 +41,25 @@ class FrontendController {
   }
 }
 
-self.addEventListener('message', async e => {
-  switch (e.data.msg) {
-    case "cancel":
-      await cc.cancel(e.data.contents);
+let response = (message) => {
+  return {
+    methodName: cc.pre.methodData[0].supportedMethods,
+    details: {
+      message: message,
+    }
+  }
+}
+
+self.addEventListener("message", async e => {
+  console.log(e);
+  switch (e.data.message_type) {
+    case "status":
+      const result = response(e.data.message);
+      await cc.status(result);
       cc = null;
-      break;
-    case "success":
-      await cc.success(e.data.contents);
-      cc = null;
-      break;
-    case "failed":
-      await cc.success(e.data.contents);
-      cc = null;
-      break;
-    case "client_ready":
-      cc.appendClient(e.source);
       break;
   }
-})
+});
 
 self.addEventListener('paymentrequest', e => {
   let url = e.methodData[0].data.url
