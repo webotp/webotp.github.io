@@ -89,6 +89,18 @@ p {
     .c-mr {
         margin: 15% 15%;
     }
+
+    * {
+        font-size: 0.9rem !important;
+    }
+
+    .form-group {
+        margin-bottom: 0.6rem !important;
+    }
+
+    .form-control {
+        padding: 0.1rem !important;
+    }
 }
 
 @media only screen and (max-width:500px) {
