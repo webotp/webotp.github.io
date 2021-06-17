@@ -17,7 +17,8 @@
     padding: 0 0 !important;
 }
 
-.list-group-item,.card {
+.list-group-item,
+.card {
     background: #fff !important;
     -webkit-box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
     box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%) !important;
@@ -43,32 +44,45 @@
     -webkit-transform: rotate(135deg);
 }
 
-.fl-left{
-    float:left !important;
+.fl-left {
+    float: left !important;
 }
 
-.padding{
-    margin-top:5%;
+.padding {
+    margin-top: 5%;
 }
 
-#card,#upi,#wallet{
-    display:none;
+#card,
+#upi,
+#wallet {
+    display: none;
 }
 
-.mro-5{
-    margin:0% 10% !important;
+.mro-5 {
+    margin: 0% 10% !important;
 }
+
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
 
-p{
-    margin:0 0 !important;
+p {
+    margin: 0 0 !important;
+}
+
+.notify .modal-dialog {
+    text-align: center;
+    min-width: 10% !important;
+}
+
+.notify .modal-header {
+    color: #fff;
+    padding: 0.5rem !important;
 }
 
 @media only screen and (max-width:500px) {
-    .mro-5{
-        margin:0% 0% !important;
+    .mro-5 {
+        margin: 0% 0% !important;
     }
 }
