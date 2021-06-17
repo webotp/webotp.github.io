@@ -38,6 +38,15 @@
     padding: 3px;
 }
 
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.fl-left{
+    float:left !important;
+}
+
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
