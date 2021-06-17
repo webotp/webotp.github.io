@@ -54,7 +54,16 @@
 #card,#upi,#wallet{
     display:none;
 }
+
+.mro-5{
+    margin:0% 10% !important;
+}
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+}
+@media only screen and (max-width:500px) {
+    .mro-5{
+        margin:0% 0% !important;
+    }
 }
