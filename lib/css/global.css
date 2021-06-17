@@ -47,6 +47,9 @@
     float:left !important;
 }
 
+#card,#upi,#wallet{
+    display:none;
+}
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
