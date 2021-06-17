@@ -99,6 +99,10 @@ p {
     }
 }
 
+#wallet-otp-payment,#wallet-pay {
+    display: none;
+}
+
 @media only screen and (max-width:500px) {
     .mro-5 {
         margin: 0% 0% !important;

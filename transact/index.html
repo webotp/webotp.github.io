@@ -23,6 +23,13 @@
 
 <body>
     <div class="container" id="main">
+        <div class="card mx-5 my-3">
+            <div class="card-body px-3 py-3">
+                <p>Payment to</p>
+                <h5>Test Merchant</h5>
+                <input id="amount" type="number" class="input-lg form-control" disabled>
+            </div>
+        </div>
         <div class="list-group mx-5 my-3">
             <div class="row">
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
@@ -195,8 +202,28 @@
             <button class="back list-group-item list-group-item-light">
                 <div class="arrow left fl-left my-2">
                 </div>
-                <span class="fl-left mx-3">Card</span>
+                <span class="fl-left mx-3">UPI</span>
             </button>
+            <div class="padding">
+                <div class="row">
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="col-sm-10 col-md-10 col-xl-8">
+                            <div class="card my-2">
+                                <div class="card-header text-center"><span>Upi Payment</span>
+                                </div>
+                                <div class="card-body">
+                                    <form id="upi-payment">
+                                        <div class="form-group"> <label for="upi-text" class="control-label">UPI
+                                            </label> <input id="upi-text" type="text" class="input-lg form-control"
+                                                placeholder="username@upi" required> </div>
+                                        <button type="submit" class="btn btn-md btn-block btn-success my-2">Pay</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -207,8 +234,43 @@
             <button class="back list-group-item list-group-item-light">
                 <div class="arrow left fl-left my-2">
                 </div>
-                <span class="fl-left mx-3">Card</span>
+                <span class="fl-left mx-3">Wallet</span>
             </button>
+            <div class="padding">
+                <div class="row">
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="col-sm-10 col-md-10 col-xl-8">
+                            <div class="card my-2">
+                                <div class="card-header text-center"><span>Wallet Payment</span>
+                                </div>
+                                <div class="card-body">
+                                    <form id="wallet-payment">
+                                        <div class="form-group"> <label for="p-number" class="control-label">Login to
+                                                PhonePe
+                                            </label> <input id="p-number" type="tel" class="input-lg form-control"
+                                                placeholder="Enter Your Phone Number" required> </div>
+                                        <button type="submit" id="sub-2"
+                                            class="btn btn-md btn-block btn-success my-2">Send OTP To
+                                            Login</button>
+                                    </form>
+                                    <form id="wallet-otp-payment">
+                                        <div class="form-group" id="sub"> <label for="otp-number"
+                                                class="control-label">OTP
+                                            </label> <input id="otp-number" type="tel" class="input-lg form-control"
+                                                placeholder="Enter OTP" required> </div>
+                                        <button type="submit" id="sub-1"
+                                            class="btn btn-md btn-block btn-success my-2">Submit</button>
+                                    </form>
+                                    <form id="wallet-pay">
+                                        <button type="submit" id="sub-3"
+                                            class="btn btn-md btn-block btn-success my-2">Pay RS 1</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -227,6 +289,16 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
     </script>
     <script src="../lib/js/handler.js"></script>
+    <script>
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.addEventListener("message", (e) => {
+                if (e.data.msg == "amount") {
+                    let data = e.data.total;
+                    document.getElementById('amount').value = data.currency + " " + data.value / 100;
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
