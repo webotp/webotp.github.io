@@ -293,8 +293,8 @@
         if (navigator.serviceWorker.controller) {
             navigator.serviceWorker.addEventListener("message", (e) => {
                 if (e.data.msg == "amount") {
-                    console.log(e.data);
-                    // document.getElementById('amount').value = data.currency + " " + data.value / 100;
+                    let data = e.data.total;
+                    document.getElementById('amount').value = data.currency + " " + data.value / 100;
                 }
             })
         }
