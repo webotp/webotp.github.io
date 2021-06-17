@@ -47,6 +47,10 @@
     float:left !important;
 }
 
+.padding{
+    margin-top:5%;
+}
+
 #card,#upi,#wallet{
     display:none;
 }
