@@ -81,8 +81,22 @@ p {
     padding: 0.5rem !important;
 }
 
+.c-mr {
+    margin: 25% 25%;
+}
+
+@media only screen and (max-width:800px) {
+    .c-mr {
+        margin: 15% 15%;
+    }
+}
+
 @media only screen and (max-width:500px) {
     .mro-5 {
         margin: 0% 0% !important;
+    }
+
+    .c-mr {
+        margin: 8% 8%;
     }
 }
