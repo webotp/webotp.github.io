@@ -97,9 +97,26 @@ p {
     .form-group {
         margin-bottom: 0.7rem !important;
     }
+
+    .col-sm-6 {
+        width: 50% !important;
+    }
+
+    .col-sm-3 {
+        width: 25% !important;
+    }
+
+    .col-sm-2 {
+        width: 20% !important;
+    }
+
+    .col-sm-4 {
+        width: 33% !important;
+    }
 }
 
-#wallet-otp-payment,#wallet-pay {
+#wallet-otp-payment,
+#wallet-pay {
     display: none;
 }
 
