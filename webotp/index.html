@@ -14,6 +14,20 @@
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="my-5">
+                <div id="supported">
+
+                </div>
+                <p class="message">
+                    Send an sms of this format
+                </p>
+                <code class="message">
+                    <p>
+                        your otp is : 123456
+                    </p>
+                    <p>
+                        @shau05.github.io #12345
+                    </p>
+                </code>
                 <form id="otp-submit" action="/webotp/success.html">
                     <label for="otp">OTP</label>
                     <input class="form-control" id="otp" autocomplete="one-time-code" required />
@@ -38,6 +52,7 @@
     <script>
         if ('OTPCredential' in window) {
             window.addEventListener('DOMContentLoaded', e => {
+                $('#supported').html(`<p class="text-success">Web API supported.</p>`);
                 const input = document.querySelector('input[autocomplete="one-time-code"]');
                 if (!input) return;
                 const ac = new AbortController();
@@ -61,6 +76,9 @@
                     console.log(err);
                 });
             });
+        } else {
+            $('.message').css("display", "none");
+            $('#supported').html(`<p class="text-danger">Web API not supported.Enter OTP manually</p>`);
         }
     </script>
 </body>
