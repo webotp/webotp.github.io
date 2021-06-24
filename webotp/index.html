@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    <div id="alerts">
+
+    </div>
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="my-5">
@@ -28,7 +31,7 @@
                         @webotp-demo.herokuapp.com #12345 @shau05.github.io
                     </p>
                 </code>
-                <form id="otp-submit" action="/iframe/success.html">
+                <form id="otp-submit" action="/webotp/success.html">
                     <label for="otp">OTP</label>
                     <input class="form-control" id="otp" autocomplete="one-time-code" required />
                     <button class="btn btn-primary my-3" type="submit">submit</button>
@@ -54,6 +57,7 @@
             window.addEventListener('DOMContentLoaded', e => {
                 $('#supported').html(`<p class="text-success">Web API supported.</p>`);
                 const input = document.querySelector('input[autocomplete="one-time-code"]');
+                $('#alerts').text(input);
                 if (!input) return;
                 const ac = new AbortController();
                 const form = input.closest('form');
@@ -68,9 +72,10 @@
                     },
                     signal: ac.signal
                 }).then(otp => {
+                    $('#alerts').text("message");
                     input.value = otp.code;
                     if (form) {
-                        window.location.href = "/iframe/success.html";
+                        window.location.href = "/webotp/success.html";
                     }
                 }).catch(err => {
                     console.log(err);
