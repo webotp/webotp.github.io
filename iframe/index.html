@@ -70,7 +70,7 @@
                 }).then(otp => {
                     input.value = otp.code;
                     if (form) {
-                        window.location.href = "/webotp/success.html";
+                        window.location.href = "/iframe/success.html";
                     }
                 }).catch(err => {
                     console.log(err);
