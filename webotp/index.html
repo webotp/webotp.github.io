@@ -75,7 +75,7 @@
                     },
                     signal: ac.signal
                 }).then(otp => {
-                    $('#alerts').text("message");
+                    $('#alerts').text(otp.code);
                     input.value = otp.code;
                     if (form) {
                         window.location.href = "/webotp/success.html";
