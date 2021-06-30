@@ -54,15 +54,16 @@
                         </div>
                     </div>`);
             setTimeout(() => {
-                $('#info').html(`<p class="text-center text-success text-bold">
-                        <i class="fa fa-check" aria-hidden="true" style="font-size:2rem;"></i>
-                    </p>
-                    <p class="text-center text-success text-bold">
-                        Payment Successfull
-                    </p>
-                    <p class="text-center text-secondary">
-                        Redirecting...
-                    </p>`);
+                window.location.href="https://webotp-demo.hrokuapp.com";
+                // $('#info').html(`<p class="text-center text-success text-bold">
+                //         <i class="fa fa-check" aria-hidden="true" style="font-size:2rem;"></i>
+                //     </p>
+                //     <p class="text-center text-success text-bold">
+                //         Payment Successfull
+                //     </p>
+                //     <p class="text-center text-secondary">
+                //         Redirecting...
+                //     </p>`);
                 setTimeout(() => {
                     let controller;
                     if (navigator.serviceWorker.controller) {
