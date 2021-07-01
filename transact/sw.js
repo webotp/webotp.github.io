@@ -65,8 +65,6 @@ self.addEventListener('paymentrequest', e => {
     if (client == null) {
       console.log("failed to open window");
     } else {
-      console.log(client);
-      e.focus();
       client.postMessage({
         msg: "amount",
         total: e.total
