@@ -61,10 +61,8 @@ self.addEventListener('paymentrequest', e => {
   let url = e.methodData[0].data.url
   console.log(e);
   cc = new FrontendController(e);
-  e.respondWith(cc.resolver.promise);
   e.openWindow(url).then((client) => {
     if (client == null) {
-      cc.resolver.reject("failed to open window");
       console.log("failed to open window");
     } else {
       client.postMessage({
