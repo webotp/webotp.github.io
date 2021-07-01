@@ -34,6 +34,9 @@
   ],
   "lang": "en-US",
   "start_url": "/",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
   "serviceworker": {
     "src": "sw.js",
     "scope": "/transact/",
