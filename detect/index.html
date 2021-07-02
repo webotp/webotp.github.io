@@ -27,7 +27,6 @@
             </div>
         </div>
     </div>
-
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -43,11 +42,23 @@
     </script>
     <script src="/lib/js/prAppLib.js"></script>
     <script>
-        $('#phonepe').on('click',() => {
-            isPhonepeAppInstalled();
+        $('#phonepe').on('click', () => {
+            isPhonepeAppInstalled().then((result) => {
+                if (result) {
+                    $('#phonepetext').html('<span class="text-success">Phonepe Installed</span>');
+                } else {
+                    $('#phonepetext').html('<span class="text-danger">Phonepe Not Installed</span>');
+                }
+            });
         });
-        $('#gpay').on('click',() => {
-            isGpayAppInstalled();
+        $('#gpay').on('click', () => {
+            isGpayAppInstalled().then((result) => {
+                if (result) {
+                    $('#gpaytext').html('<span class="text-success">Gpay Installed</span>');
+                } else {
+                    $('#gpaytext').html('<span class="text-danger">Gpay Not Installed</span>');
+                }
+            });
         })
     </script>
 </body>
