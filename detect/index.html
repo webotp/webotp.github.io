@@ -19,10 +19,14 @@
                         Is PhonePe installed??
                     </p>
                     <button id="phonepe" class="btn btn-primary btn-sm btn-block">Check Phonepe</button>
+                    <button id="phonepepay" style="display: none;" class="btn btn-primary btn-sm btn-block my-2">Pay via
+                        phonpe app</button>
                     <p class="my-3" id="gpaytext">
                         Is Gpay installed??
                     </p>
                     <button id="gpay" class="btn btn-primary btn-sm btn-block">Check Gpay</button>
+                    <button id="gpaypay" style="display: none;" class="btn btn-primary btn-sm btn-block my-2">Pay via
+                        gpay app</button>
                 </div>
             </div>
         </div>
@@ -46,6 +50,7 @@
             isPhonepeAppInstalled().then((result) => {
                 if (result) {
                     $('#phonepetext').html('<span class="text-success">Phonepe Installed</span>');
+                    $('#phonepepay').css("display", "block");
                 } else {
                     $('#phonepetext').html('<span class="text-danger">Phonepe Not Installed</span>');
                 }
@@ -55,10 +60,17 @@
             isGpayAppInstalled().then((result) => {
                 if (result) {
                     $('#gpaytext').html('<span class="text-success">Gpay Installed</span>');
+                    $('#gpaypay').css("display", "block");
                 } else {
                     $('#gpaytext').html('<span class="text-danger">Gpay Not Installed</span>');
                 }
             });
+        })
+        $('#phonpepay').on('click', () => {
+            showPhonepe();
+        })
+        $('#gpaypay').on('click', () => {
+            showGpay();
         })
     </script>
 </body>
