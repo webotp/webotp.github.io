@@ -11,13 +11,19 @@
 </head>
 
 <body>
-    <div class="text-info">
-        message
-        <div id="alerts">
-
+    <div class="container" id="d-con">
+        <div class="d-flex justify-content-center">
+            <div class="my-5">
+                <form id="login">
+                    <label for="phone">Login</label>
+                    <input class="form-control" id="phone" required />
+                    <button class="btn btn-primary my-3" type="submit">submit</button>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="container">
+   
+    <div class="container" id="d-cont" style="display:none">
         <div class="d-flex justify-content-center">
             <div class="my-5">
                 <div id="supported">
@@ -31,7 +37,7 @@
                         your otp is : 123456
                     </p>
                     <p>
-                        @webotp-demo.herokuapp.com #12345 @shau05.github.io
+                        @shau05.github.io #12345
                     </p>
                 </code>
                 <form id="otp-submit" action="/webotp/success.html">
@@ -88,6 +94,11 @@
             $('.message').css("display", "none");
             $('#supported').html(`<p class="text-danger">Web API not supported.Enter OTP manually</p>`);
         }
+        $('#login').on('submit',(e) => {
+            e.preventDefault();
+            $('#d-con').css("display","none");
+            $('#d-cont').css("display","block");
+        })
     </script>
 </body>
 
